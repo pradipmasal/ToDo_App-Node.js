@@ -45,11 +45,8 @@ router.post('/update/:id',async(req, res)=>{
 
 //Delete a task
 router.get('/delete/:id',async(req, res)=>{
-    
     try{
-        
         const data = await tasks.findByIdAndDelete(req.params.id);
-
         res.redirect('/todo/')
     }catch(err){
         res.send(err)
@@ -59,7 +56,6 @@ router.get('/delete/:id',async(req, res)=>{
 
 // to edit task
 router.get('/edit/:id',async(req, res)=>{
-
     const id = req.params.id;
     const data = await tasks.findById(id);
     res.render('edit', {data})
@@ -85,4 +81,5 @@ router.get('/undone/:id', async(req, res)=>{
     )   
     res.redirect('/todo/')
 })
+
 module.exports = router

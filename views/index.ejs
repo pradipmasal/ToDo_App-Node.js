@@ -22,25 +22,29 @@
                 <% data.forEach((task) => { %>
                 <div class="card m-1">
                     <div class="card-body">
-                        <%= task.task %>
-                        <span style="position: relative; float: right;">
-                            <a href="/todo/completed/<%= task._id %>" class="btn btn-success"><i class="fa fa-check"></i> Mark as Done</a>
-                            <a href="/todo/delete/<%= task._id %>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                            <a href="/todo/edit/<%= task._id %>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
-                        </span>
+                        <strong>Task:</strong> <%= task.task %> <br>
+            <small class="text-muted">Created At: <%= new Date(task.createdAt).toLocaleString() %></small><br>
+            <small class="text-muted">Updated At: <%= new Date(task.updatedAt).toLocaleString() %></small>
+            <span style="position: relative; float: right;">
+                <a href="/todo/completed/<%= task._id %>" class="btn btn-success"><i class="fa fa-check"></i> Mark as Done</a>
+                <a href="/todo/delete/<%= task._id %>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                <a href="/todo/edit/<%= task._id %>" class="btn btn-primary"><i class="fa fa-pencil"></i></a>
+            </span>
                     </div>
                 </div>
                 <% }) %>
             </div>
 
-            <div class="col-md-5 col-lg-5">
+            <div class="col-md-5 col-lg-5" style="height: 450px; overflow: scroll;">
                 <h5>Completed Tasks</h5>
                 <!-- List of all the completed tasks -->
                 <% completedTasks.forEach((task) => { %>
-                <div class="card m-1">
-                    <div class="card-body">
+                <div class="card m-1" >
+                    <div class="card-body" >
                         <!-- This is the completed task -->
-                        <%= task.task %>
+                        <strong>Task:</strong> <%= task.task %> <br>
+                        <small class="text-muted">Created At: <%= new Date(task.createdAt).toLocaleString() %></small><br>
+                        <small class="text-muted">Updated At: <%= new Date(task.updatedAt).toLocaleString() %></small>
                         <span style="position: relative; float: right;">
                             <a href="/todo/undone/<%= task._id %>" class="btn btn-danger"><i class="fa fa-times"></i> Mark as UnDone</a>
                         </span>
